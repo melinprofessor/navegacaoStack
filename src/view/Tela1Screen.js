@@ -1,17 +1,21 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 
 
 export function navigationOptions({navigation}) {
     return {
-        title:"Tela 1"
+        title:"Tela 1",
     }
 }
 
 const Tela1 = props => {
+    console.log(props.navigation.getParam("nome"))
+    const endereco = props.navigation.getParam("endereco")
     return (
         <View>
-            <Text> TELA 1</Text>
+            <Text style={{fontSize: 50}}>rua: {endereco.rua}</Text>
+            <Text style={{fontSize: 50}}>numero: {endereco.numero}</Text>
+            <Button title="Voltar" onPress={() => props.navigation.goBack()} />
         </View>
     );
 }
